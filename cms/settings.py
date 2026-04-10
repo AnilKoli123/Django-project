@@ -121,9 +121,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
 
 
-ALLOWED_HOSTS = [
-    'https://django-pro-irn8.onrender.com'
-]
+ALLOWED_HOSTS = ['*']
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
