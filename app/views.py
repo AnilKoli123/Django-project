@@ -77,6 +77,11 @@ def student_dashboard(request):
         'enrollments': enrollments
     })
 
+    return render(request, 'student_dashboard.html', {
+        'courses': courses,
+        'enrollments': enrollments
+    })
+
 def enroll(request, id):
     user_id = request.session['user']
     Enrollment.objects.create(student_id=user_id, course_id=id)
