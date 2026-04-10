@@ -125,7 +125,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 ALLOWED_HOSTS = [
-    'django-pro-irn8.onrender.com'
+    'https://django-pro-irn8.onrender.com'
 ]
 
 STATIC_URL = '/static/'
