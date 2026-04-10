@@ -120,8 +120,15 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://django-pro-irn8.onrender.com",
+    "https://*.onrender.com"
+]
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "django-pro-irn8.onrender.com",
+    ".onrender.com"
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
