@@ -1,27 +1,28 @@
-{% extends 'base.html' %}
-{% block content %}
+<h2>📚 Available Courses</h2>
+
+{% for c in courses %}
+<div class="card">
+
+    <h3>{{ c.title }}</h3>
+    <p>👨‍🏫 {{ c.teacher.username }}</p>
+
+    <a href="/enroll/{{c.id}}/">
+        <button class="btn">Enroll</button>
+    </a>
+
+</div>
+{% endfor %}
+
+<hr>
 
 <h2>🎓 My Courses</h2>
 
 {% for e in enrollments %}
 <div class="card">
 
-<h3>{{ e.course.title }}</h3>
-<p>👨‍🏫 {{ e.course.teacher.username }}</p>
-
-<a href="/attendance/{{e.course.id}}/">
-<button class="btn btn-green">Attendance</button>
-</a>
-
-<a href="/assignments/{{e.course.id}}/">
-<button class="btn btn-yellow">Assignments</button>
-</a>
-
-<a href="/review/{{e.course.id}}/">
-<button class="btn">Review</button>
-</a>
+    <h3>{{ e.course.title }}</h3>
 
 </div>
+{% empty %}
+<p>No courses enrolled yet</p>
 {% endfor %}
-
-{% endblock %}
