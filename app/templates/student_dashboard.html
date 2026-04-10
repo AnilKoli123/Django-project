@@ -1,28 +1,86 @@
-<h2>📚 Available Courses</h2>
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 style="margin-bottom:20px;">🎓 Student Dashboard</h2>
+
+<!-- AVAILABLE COURSES -->
+<h3>📚 Available Courses</h3>
 
 {% for c in courses %}
-<div class="card">
+<div style="
+    background:#1e293b;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+">
 
-    <h3>{{ c.title }}</h3>
-    <p>👨‍🏫 {{ c.teacher.username }}</p>
+    <div>
+        <h3 style="margin:0;">{{ c.title }}</h3>
+        <p style="margin:5px 0;">👨‍🏫 {{ c.teacher.username }}</p>
+    </div>
 
     <a href="/enroll/{{c.id}}/">
-        <button class="btn">Enroll</button>
+        <button style="
+            background:#38bdf8;
+            padding:8px 12px;
+            border:none;
+            border-radius:6px;
+            color:white;
+            cursor:pointer;
+        ">
+            Enroll
+        </button>
     </a>
 
 </div>
+{% empty %}
+<p>No courses available</p>
 {% endfor %}
 
-<hr>
+<hr style="margin:30px 0;">
 
-<h2>🎓 My Courses</h2>
+<!-- ENROLLED COURSES -->
+<h3>✅ My Courses</h3>
 
 {% for e in enrollments %}
-<div class="card">
+<div style="
+    background:#334155;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+">
 
-    <h3>{{ e.course.title }}</h3>
+    <h3 style="margin:0;">{{ e.course.title }}</h3>
+
+    <div style="margin-top:10px;">
+
+        <a href="/attendance/{{e.course.id}}/">
+            <button style="background:#22c55e; padding:6px 10px; border:none; border-radius:5px; color:white;">
+                Attendance
+            </button>
+        </a>
+
+        <a href="/assignments/{{e.course.id}}/">
+            <button style="background:#f59e0b; padding:6px 10px; border:none; border-radius:5px; color:white;">
+                Assignments
+            </button>
+        </a>
+
+        <a href="/review/{{e.course.id}}/">
+            <button style="background:#6366f1; padding:6px 10px; border:none; border-radius:5px; color:white;">
+                Review
+            </button>
+        </a>
+
+    </div>
 
 </div>
+
 {% empty %}
 <p>No courses enrolled yet</p>
 {% endfor %}
+
+{% endblock %}
