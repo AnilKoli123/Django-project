@@ -130,5 +130,8 @@ ALLOWED_HOSTS = [
     ".onrender.com"
 ]
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
