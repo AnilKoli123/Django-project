@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>👨‍🏫 Teacher Dashboard</h2>
+
+<a href="/add-course/"><button class="btn">Add Course</button></a>
+<a href="/upload-assignment/"><button class="btn btn-yellow">Upload Assignment</button></a>
+
+<h3>My Courses</h3>
+
+{% for c in courses %}
+<div class="card">
+<h3>{{ c.title }}</h3>
+</div>
+{% endfor %}
+
+<h2>📊 Analytics</h2>
+<canvas id="chart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = {{ labels|safe }};
+const data = {{ data|safe }};
+
+new Chart(document.getElementById('chart'), {
+type: 'bar',
+data: {
+labels: labels,
+datasets: [{ label: 'Students', data: data }]
+}
+});
+</script>
+
+{% endblock %}
